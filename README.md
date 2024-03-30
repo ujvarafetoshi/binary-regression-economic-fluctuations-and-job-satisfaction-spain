@@ -2,7 +2,10 @@
 
 ## Project Introduction
 
-This repository contains the data science project "How Economic Fluctuations Influence Job Satisfaction Among Employees in Spain". It utilizes data from the European Social Survey's 10th round (2020) to explore the relationships between economic conditions, job security, work-life balance, and their impacts on job satisfaction levels among Spanish employees.
+This repository contains the data science project "How Economic Fluctuations Influence Job Satisfaction Among Employees in Spain". It utilizes data from the European Social Survey's 10th round (2020) to explore the relationships between economic conditions, job security, work-life balance, and their impacts on job satisfaction levels among Spanish employees.The focus of this project is to analyse How economic fluctuations influence job satisfaction among employees in Spain, considering the impact of job security and work-life balance. The target variable under analysis is ‘How satisfied are you in your main job’. The dependent variable uses a score from 0 to 10 with 0 being 'Extremely dissatisfied' and 10 being 'Extremely satisfied'. Since the focus of the project was Binary Regression, we transform our dependent using mean, and median (respectively) for the cutoff, to be binary: **satisfied and not satisfied.**
+
+The methodology followed throughout the project respected the eight stages for building predictive econometric models, namely, Exploratory Data Analysis and Data Preparation, Creation of  a Richer Set of Covariates, Variable Selection, Multicollinearity Issue, Model Estimation, Model Validation, Model Selection and Interpretation and Prediction. The current report will carefully detail each of the previously mentioned steps in the context of the Spanish reality regarding job satisfaction.
+
 
 ## Dataset Overview
 
@@ -66,14 +69,57 @@ Some notebooks may require access to the dataset files listed in the Dataset Ove
   2. Creation of a richer set of covariates, including handling multicollinearity and variable transformation.
   3. Model building, including Logistic Regression and Probit models, to estimate the influence of selected variables on job satisfaction.
   4. Model validation and selection based on performance metrics like AUC, R2 Efron, and classification accuracy.
+ 
+### Model Generation and Selection
 
-## Key Findings
+This phase of the project delves into the creation and comparative analysis of three distinct models aimed at understanding the impact of economic fluctuations on job satisfaction among employees in Spain. Each model approaches the dataset with a unique perspective, utilizing a mix of categorical variables, interaction variables, and original variables with transformations.
 
-- **Economic Fluctuations**: Strongly influence job satisfaction, with employees feeling less secure during economic downturns.
-- **Job Security and Work-Life Balance**: Emerged as significant predictors of job satisfaction.
-- **Socio-Demographic Factors**: Gender, age, and household composition also play a crucial role in determining job satisfaction.
-- **Model Insights**: The logistic regression model binned model(Model 1) provided the best fit, indicating that both individual perceptions and broader economic conditions significantly impact job satisfaction.
+#### Model 1: Binned Model with Categorical Variables
 
+- **Objective**: To capture patterns and relationships within the data using only categorical variables.
+- **Methodology**: 
+  - Binning of numeric and ordinal features.
+  - Generation of dummy variables for binned features.
+  - Selection of variables based on the Chi-Square test of independence.
+  - Mitigation of multicollinearity through Spearman correlation coefficient and VIF analysis.
+- **Estimation & Validation**:
+  - Logistic regression model estimation.
+  - Validation through convergence checks and information criteria (AIC, BIC, and Likelihood Ratio Test).
+
+#### Model 2: Model with Interaction Variables
+
+- **Objective**: To investigate the complex relationships contributing to job satisfaction through interaction variables.
+- **Methodology**:
+  - Enrichment of covariates with square, cube transformations, and two-level interaction effects.
+  - Variable selection through Spearman rank correlation test for numeric and ordinal covariates and chi-squared test for nominal covariates.
+  - Handling multicollinearity with a VIF threshold of 10.
+- **Estimation & Validation**:
+  - Estimation using the Probit model.
+  - Validation shows higher information criteria values compared to Model 1, suggesting Model 1's superior fit.
+
+#### Model 3: Model with Original Variables and Transformations
+
+- **Objective**: To explore the impact of non-linear effects and transformations on the prediction of job satisfaction.
+- **Methodology**:
+  - Application of various transformations to numerical features.
+  - Standardization of the dataset for consistent scale across features.
+  - Reduced feature set based on Chi-square test of independence and VIF analysis.
+- **Estimation & Validation**:
+  - Logistic regression model estimation.
+  - Higher information criteria values compared to Models 1 and 2, indicating Model 1 as the best fit among the three.
+
+### Model Selection and Conclusion
+
+The selection of the best model was based on a comprehensive evaluation involving AUC, R2 Efron, classification accuracy, and the analysis of prediction errors. Model 1 emerged as the optimal choice, demonstrating the highest AUC, better explanatory power, and superior classification accuracy.
+
+### Key Insights
+
+- Emotional attachment to the country, happiness levels, and support from line managers significantly influence job satisfaction.
+- The binned approach of Model 1 effectively captures the nuances of job satisfaction dynamics, outperforming more complex models.
+
+## Conclusion
+
+The exploration of economic fluctuations on job satisfaction in Spain, leveraging data from the European Social Survey, has culminated in significant insights. The study underscored the importance of emotional well-being, workplace support, and socio-demographic factors in determining job satisfaction levels. Model 1, with its binned categorical approach, provided a robust framework for predicting job satisfaction, offering a foundation for targeted interventions aimed at enhancing employee well-being amidst economic changes.
 
 ## Contributing
 
