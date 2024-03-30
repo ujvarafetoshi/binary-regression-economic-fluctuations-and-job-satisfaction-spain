@@ -47,6 +47,34 @@ Some notebooks may require access to the dataset files listed in the Dataset Ove
 - After uploading the files, you can run the code cells sequentially by clicking on the play button (▶️) on the left side of each code cell.
 - To run all cells in the notebook, you can go to `Runtime` > `Run all`.
 
+## Analysis Phases
+
+### Preliminary Variable Selection
+
+- **Notebook**: `01_Preliminary_Variable_Selection.ipynb`
+- **Objective**: To clean and select relevant variables from the raw dataset.
+- **Key Steps**:
+  1. Data cleaning, including handling missing values and renaming columns for clarity.
+  2. Preliminary analysis to identify variables significantly impacting job satisfaction.
+
+### Model Implementation
+
+- **Notebook**: `02_Data_Analysis_Modelling_Prediction.ipynb`
+- **Objective**: To build predictive models that assess the impact of various factors on job satisfaction.
+- **Key Steps**:
+  1. Exploratory Data Analysis (EDA) to understand data distribution and underlying patterns.
+  2. Creation of a richer set of covariates, including handling multicollinearity and variable transformation.
+  3. Model building, including Logistic Regression and Probit models, to estimate the influence of selected variables on job satisfaction.
+  4. Model validation and selection based on performance metrics like AUC, R2 Efron, and classification accuracy.
+
+## Key Findings
+
+- **Economic Fluctuations**: Strongly influence job satisfaction, with employees feeling less secure during economic downturns.
+- **Job Security and Work-Life Balance**: Emerged as significant predictors of job satisfaction.
+- **Socio-Demographic Factors**: Gender, age, and household composition also play a crucial role in determining job satisfaction.
+- **Model Insights**: The logistic regression model binned model(Model 1) provided the best fit, indicating that both individual perceptions and broader economic conditions significantly impact job satisfaction.
+
+
 ## Contributing
 
 We welcome contributions to improve the project. Please fork the repository, make your changes, and submit a pull request with a description of your modifications.
